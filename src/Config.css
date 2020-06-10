@@ -1,0 +1,59 @@
+.hint{
+    font-style: italic;
+    font-weight:bold;
+    color:black;
+  }
+  .customer{
+      margin-top:50px;
+      margin-left:600px;
+  }
+  .logo{
+    margin-top:30px;
+    margin-left:600px;
+}
+.color{
+    margin-top:30px;
+    margin-left:600px;
+}
+.config-button{
+    margin-top:30px;
+    margin-left:600px;
+}
+.u_config a.active{
+    background-color:darkblue;
+  }
+  .t_config{
+    text-align:center;
+    color:white;
+    position: relative;
+    top:50px;
+    font-weight: 100;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    
+  }
+  .contain_config{
+    width:100%;
+    height:200px;
+    background-image: url(sky2.png);
+    background-size: cover;
+  }
+  .u_config {
+    list-style-type: none;
+    position: relative;
+    top:90px;
+    margin: 0px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  .u1_config{
+    list-style-type: none;
+    position: relative;
+    top:90px;
+    margin: 0px;
+    margin-left:10px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    width:1500px;
+  }  
