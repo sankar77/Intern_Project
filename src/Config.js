@@ -31,57 +31,78 @@ class Config extends React.Component{
             color: ' ',
         }
     }
-    handleCustomerClick = (val)=>{
-        if(val==1)
-            this.setState({
-                customer:'BestBuy'
-            })
-        if(val==2)
-            this.setState({
-                customer:'HomeDepot'
-            })
-        if(val==3)
-            this.setState({
-                customer:'Costco'
-            })
+    handleCustomerClick = (item)=>{
+        // if(val==0)
+        //     this.setState({
+        //         customer:'BestBuy'
+        //     })
+        // if(val==1)
+        //     this.setState({
+        //         customer:'HomeDepot'
+        //     })
+        // if(val==2)
+        //     this.setState({
+        //         customer:'Costco'
+        //     })
+        this.setState({customer:item.customer})
+        // console.log(item.customer);
     }
-    handleLogoClick = (val)=>{
-        if(val==1)
-            this.setState({
-                logo:'BestBuy'
-            })
-        if(val==2)
-            this.setState({
-                logo:'HomeDepot'
-            })
-        if(val==3)
-            this.setState({
-                logo:'Costco'
-            })
+    handleLogoClick = (item)=>{
+        // if(val==1)
+        //     this.setState({
+        //         logo:'BestBuy'
+        //     })
+        // if(val==2)
+        //     this.setState({
+        //         logo:'HomeDepot'
+        //     })
+        // if(val==3)
+        //     this.setState({
+        //         logo:'Costco'
+        //     })
+        this.setState({logo:item.logo})
     }
-    handleColorClick = (val)=>{
-        if(val==1)
-            this.setState({
-                color:'BestBuy'
-            })
-        if(val==2)
-            this.setState({
-                color:'HomeDepot'
-            })
-        if(val==3)
-            this.setState({
-                color:'Costco'
-            })
+    handleColorClick = (item)=>{
+        // if(val==1)
+        //     this.setState({
+        //         color:'BestBuy'
+        //     })
+        // if(val==2)
+        //     this.setState({
+        //         color:'HomeDepot'
+        //     })
+        // if(val==3)
+        //     this.setState({
+        //         color:'Costco'
+        //     })
+        this.setState({color:item.color})
     }
+
     handleSubmit = ()=>{
-        if(this.state.customer=='BestBuy')
-            history.push('/bestbuy');
-        if(this.state.customer=='HomeDepot')
-            history.push('/homedepot');
-        if(this.state.customer=='Costco')
-            history.push('/costco');
+        // if(this.state.customer=='BestBuy')
+        //     history.push('/bestbuy');
+        // if(this.state.customer=='HomeDepot')
+        //     history.push('/homedepot');
+        // if(this.state.customer=='Costco')
+        //     history.push('/costco');
+        const data = {
+            cust_name:this.state.customer,
+            logo:this.state.logo,
+            color:this.state.color,
+        }
+        console.log(this.state.customer);
+        console.log(this.state.logo);
+        console.log(this.state.color);
+        history.push({pathname:'/landingpage',data:data});
+
+        // console.log(JSON.parse(localStorage.getItem('customer')));
+    }
+    handleAdd = ()=>{
+        history.push('/addcustomer')
     }
     render(){
+        const dt= JSON.parse(localStorage.getItem('customer'));
+        // localStorage.removeItem('customer');
         return(
             <div>
                 <div class = "contain_config">
@@ -106,12 +127,15 @@ class Config extends React.Component{
             <FormControl style = {{minWidth:200}}>
               <InputLabel htmlFor="grouped-select">Options</InputLabel>
               <Select defaultValue="" id="grouped-select">
-                <MenuItem value="BestBuy" onClick= {()=>{this.handleCustomerClick(1)}}>
+              {dt.map((item,index)=>
+              <MenuItem key = {index} value = {index} onClick = {()=>{this.handleCustomerClick(item)}}>{item.customer}</MenuItem>
+              )}
+                {/* <MenuItem value="BestBuy" onClick= {()=>{this.handleCustomerClick(1)}}>
                   <em>BestBuy</em>
                 </MenuItem>
                 <ListSubheader>Additional Customers</ListSubheader>
                 <MenuItem value={1} onClick = {()=>{this.handleCustomerClick(2)}}>Home Depot</MenuItem>
-                <MenuItem value={2} onClick = {()=>this.handleCustomerClick(3)}>Costco</MenuItem>
+                <MenuItem value={2} onClick = {()=>this.handleCustomerClick(3)}>Costco</MenuItem> */}
                 
               </Select>
             </FormControl>
@@ -125,12 +149,15 @@ class Config extends React.Component{
             <FormControl style = {{minWidth:200}}>
               <InputLabel htmlFor="grouped-select">Options</InputLabel>
               <Select defaultValue="" id="grouped-select">
-                <MenuItem value="BestBuy-logo" onClick = {()=>{this.handleLogoClick(1)}}>
+              {dt.map((item,index)=>
+              <MenuItem key = {index} value = {index} onClick = {()=>{this.handleLogoClick(item)}}>{item.logo}</MenuItem>
+              )}
+                {/* <MenuItem value="BestBuy-logo" onClick = {()=>{this.handleLogoClick(1)}}>
                   <em>BestBuy-logo</em>
                 </MenuItem>
                 <ListSubheader>Additional Logos</ListSubheader>
                 <MenuItem value={1} onClick = {()=>{this.handleLogoClick(2)}}>Home Depot</MenuItem>
-                <MenuItem value={2} onClick = {()=>{this.handleLogoClick(3)}}>Costco</MenuItem>
+                <MenuItem value={2} onClick = {()=>{this.handleLogoClick(3)}}>Costco</MenuItem> */}
                 
               </Select>
             </FormControl>
@@ -144,12 +171,15 @@ class Config extends React.Component{
             <FormControl style = {{minWidth:200}}>
               <InputLabel htmlFor="grouped-select">Options</InputLabel>
               <Select defaultValue="" id="grouped-select">
-                <MenuItem value="BestBuy-color" onClick = {()=>{this.handleColorClick(1)}}>
+              {dt.map((item,index)=>
+              <MenuItem key = {index} value = {index} onClick = {()=>{this.handleColorClick(item)}}>{item.color}</MenuItem>
+              )}
+                {/* <MenuItem value="BestBuy-color" onClick = {()=>{this.handleColorClick(1)}}>
                   <em>BestBuy-color</em>
                 </MenuItem>
                 <ListSubheader>Additional Colors</ListSubheader>
                 <MenuItem value={1} onClick = {()=>{this.handleColorClick(2)}}>Home Depot</MenuItem>
-                <MenuItem value={2} onClick = {()=>{this.handleColorClick(3)}}>Costco</MenuItem>
+                <MenuItem value={2} onClick = {()=>{this.handleColorClick(3)}}>Costco</MenuItem> */}
                 
               </Select>
             </FormControl>
@@ -157,6 +187,9 @@ class Config extends React.Component{
             </div>
             <div class = "config-button">
                 <Button variant = "contained" onClick = {this.handleSubmit} color = "primary">SUBMIT</Button>
+            </div>
+            <div class = "add-button">
+                <Button variant = "contained" onClick = {this.handleAdd} color = "primary">ADD CUSTOMER</Button>
             </div>
             </div>
         )

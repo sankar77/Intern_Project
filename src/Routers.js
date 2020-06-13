@@ -9,6 +9,8 @@ import Config from './Config';
 import BestBuy from './BestBuy';
 import HomeDepot from './HomeDepot';
 import Costco from './Costco';
+import AddCustomer from './AddCustomer';
+import LandingPage from './LandingPage';
 export default class Routers extends Component {
     render() {
         return (
@@ -20,6 +22,8 @@ export default class Routers extends Component {
                     <Route path ="/bestbuy" component = {BestBuy}/>
                     <Route path = "/homedepot" component = {HomeDepot}/>
                     <Route path = "/costco" component = {Costco}/>
+                    <Route path = "/addcustomer" component = {AddCustomer}/>
+                    <Route path = "/landingpage" component = {LandingPage}/>
                     
                     </Switch>
 
